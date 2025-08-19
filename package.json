@@ -6,7 +6,10 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "py:dev": "bash python-models/dev.sh",
+    "py:health": "bash -lc 'curl -sS ${PY_UTILIZATION_BASE_URL:-http://127.0.0.1:8001}/health | cat'",
+    "py:predict:example": "bash -lc 'curl -sS -X POST -H \"Content-Type: application/json\" -d \"{\\\"age_years_2022\\\": 45, \\\"bmi\\\": 27.5}\" ${PY_UTILIZATION_BASE_URL:-http://127.0.0.1:8001}/predict | cat'"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^1.2.12",
@@ -56,7 +59,7 @@
     "immer": "latest",
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
-    "next": "14.2.16",
+    "next": "^15.4.6",
     "next-themes": "^0.4.4",
     "pdf-parse": "latest",
     "react": "^18",
